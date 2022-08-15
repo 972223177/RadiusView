@@ -12,11 +12,13 @@ class RadiusHelper {
         style = Paint.Style.STROKE
     }
     private val rectF = RectF()
+    private var isCircle = false
 
     fun initAttr(attributeSet: AttributeSet?, context: Context) {
         if (attributeSet != null) {
             val attrs = context.obtainStyledAttributes(attributeSet, R.styleable.RadiusView)
             val radius = attrs.getDimension(R.styleable.RadiusView_rv_radius, 0f)
+            isCircle = attrs.getBoolean(R.styleable.RadiusView_rv_isCircle, false)
             radiusArray = if (radius != 0f) {
                 floatArrayOf(radius, radius, radius, radius, radius, radius, radius, radius)
             } else {
@@ -50,7 +52,12 @@ class RadiusHelper {
     fun clipCanvas(canvas: Canvas, width: Float, height: Float) {
         rectF.set(0f, 0f, width, height)
         path.reset()
-        path.addRoundRect(rectF, radiusArray, Path.Direction.CW)
+        if (isCircle) {
+            val size = width.coerceAtLeast(height)
+            path.addCircle(width / 2, height / 2, size / 2, Path.Direction.CW)
+        } else {
+            path.addRoundRect(rectF, radiusArray, Path.Direction.CW)
+        }
         canvas.clipPath(path)
     }
 
@@ -58,5 +65,5 @@ class RadiusHelper {
         canvas.drawPath(path, paint)
     }
 
-    
+
 }

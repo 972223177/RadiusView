@@ -8,5 +8,6 @@
         <attr name="rv_rightBottomRadius" format="dimension" />
         <attr name="rv_borderWidth" format="dimension" />
         <attr name="rv_borderColor" format="color" />
+        <attr name="rv_isCircle" format="boolean" />
     </declare-styleable>
 </resources>
