@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RadiusView">
+        <attr name="rv_radius" format="dimension" />
+        <attr name="rv_leftTopRadius" format="dimension" />
+        <attr name="rv_leftBottomRadius" format="dimension" />
+        <attr name="rv_rightTopRadius" format="dimension" />
+        <attr name="rv_rightBottomRadius" format="dimension" />
+        <attr name="rv_borderWidth" format="dimension" />
+        <attr name="rv_borderColor" format="color" />
+    </declare-styleable>
+</resources>
